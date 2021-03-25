@@ -1,4 +1,4 @@
-#Makefile for AVR attiny13_ws2812 
+#Makefile for RGB_box
 
 MCU=attiny13
 F_CPU=9600000
@@ -6,8 +6,8 @@ CC=avr-gcc
 OBJCOPY=avr-objcopy
 CFLAGS=-mmcu=${MCU} -DF_CPU=${F_CPU} -Os 
 TARGET=main
-SRC=main.c
-SRC+=ws2812.c init_mcu.c
+SRC=src/main.c
+SRC+=src/ws2812.c src/init_mcu.c
 
 #AVRDUDE 
 PROGRAMMER=avrisp2
@@ -19,7 +19,7 @@ HFUSE=0xff
 
 all:
 	${CC} ${CFLAGS} -o ${TARGET}.o ${SRC}
-	${OBJCOPY} -j .text -j .data -O ihex ${TARGET}.o ${TARGET}.hex	
+	${OBJCOPY} -j .text -j .data -O ihex ${TARGET}.o ${TARGET}.hex  
 
 signature:
 	avrdude -c ${PROGRAMMER} -P usb -p ${AVRDUDE_MCU} 
