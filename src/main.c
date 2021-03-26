@@ -62,7 +62,7 @@ void led_program(void)
                     ws2812_set_light(LED_OFF);  
             }
         }
-
+        
         _delay_ms(200);
 }
 
@@ -87,7 +87,5 @@ void main(void)
             ws2812_reset();
             _delay_ms(500);
         }
-
-
-    }   
+    }
 }
